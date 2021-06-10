@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show all Users</title>
+    <th:block th:replace="partials/navbar :: bootStrap_styling_sheet" ></th:block>
+</head>
+<body>
+<nav th:replace="partials/navbar :: bootStrap_nav" ></nav>
+<h1>Here are all the Users</h1>
+
+<!--<div th:if="${user.firstName.toLowerCase() == 'sam'}" >-->
+
+<!--    <p>Hes alright</p>-->
+
+<!--</div>-->
+<!--<div th:if="${user.firstName.toLowerCase() != 'sam'}">-->
+
+<!--    <p>Well that is not sam</p>-->
+
+<!--</div>-->
+
+<th:block th:each="user : ${users}">
+
+    <th:block th:if="${user.firstName.toLowerCase() != 'samuel'}">
+
+        <p th:text="${user.fullName}" ></p>
+
+    </th:block>
+
+
+</th:block>
+
+
+<!--<p>Say hello to <span th:text="${user.fullName}"></span></p>-->
+
+
+
+</body>
+</html>

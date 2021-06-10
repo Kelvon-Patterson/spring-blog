@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/partials/header :: bootStrap_header">
+    <meta charset="UTF-8">
+    <title>Roll Dice</title>
+    <th:block th:replace="/partials/navbar :: bootStrap_styling_sheet" ></th:block>
+    <th:block th:replace="/partials/header :: bootStrap_styling_sheet" ></th:block>
+    <th:block th:replace="/partials/footer :: bootStrap_styling_sheet" ></th:block>
+
+
+</head>
+<body>
+<nav th:replace="partials/navbar :: bootStrap_nav" ></nav>
+<h3>
+<span th:text="${match}"></span>
+</h3>
+<ul>
+    <li><a href="/roll-dice/1">1</a></li>
+    <li><a href="/roll-dice/2">2</a></li>
+    <li><a href="/roll-dice/3">3</a></li>
+    <li><a href="/roll-dice/4">4</a></li>
+    <li><a href="/roll-dice/5">5</a></li>
+    <li><a href="/roll-dice/6">6</a></li>
+</ul>
+<a href="/roll-dice">Play again! </a>
+
+
+</body>
+<footer th:replace="/partials/footer :: bootStrap_footer"></footer>
+
+<th:block th:replace="/partials/navbar :: bootStrap_scripts" ></th:block>
+<th:block th:replace="/partials/header :: bootStrap_scripts" ></th:block>
+<th:block th:replace="/partials/footer :: bootStrap_scripts" ></th:block>
+
+
+
+
+</html>
