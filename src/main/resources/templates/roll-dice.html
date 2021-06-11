@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/partials/header :: bootStrap_header">
+<head >
+
     <meta charset="UTF-8">
     <title>Roll Dice</title>
-    <th:block th:replace="/partials/navbar :: bootStrap_styling_sheet" ></th:block>
-    <th:block th:replace="/partials/header :: bootStrap_styling_sheet" ></th:block>
-    <th:block th:replace="/partials/footer :: bootStrap_styling_sheet" ></th:block>
+<!--    <th:block th:replace="/partials/navbar :: bootStrap_styling_sheet" ></th:block>-->
+<!--    <th:block th:replace="/partials/header :: bootStrap_styling_sheet" ></th:block>-->
+<!--    <th:block th:replace="/partials/footer :: bootStrap_styling_sheet" ></th:block>-->
 
 
 </head>
-<body>
 <nav th:replace="partials/navbar :: bootStrap_nav" ></nav>
+
+<header th:replace="/partials/header :: bootStrap_header"></header>
+<br>
+<body>
+
 <h3>
 <span th:text="${match}"></span>
 </h3>
@@ -28,9 +33,9 @@
 </body>
 <footer th:replace="/partials/footer :: bootStrap_footer"></footer>
 
-<th:block th:replace="/partials/navbar :: bootStrap_scripts" ></th:block>
-<th:block th:replace="/partials/header :: bootStrap_scripts" ></th:block>
-<th:block th:replace="/partials/footer :: bootStrap_scripts" ></th:block>
+<!--<th:block th:include="/partials/navbar :: bootStrap_scripts" ></th:block>-->
+<!--<th:block th:replace="/partials/header :: bootStrap_scripts" ></th:block>-->
+<!--<th:block th:replace="/partials/footer :: bootStrap_scripts" ></th:block>-->
 
 
 
