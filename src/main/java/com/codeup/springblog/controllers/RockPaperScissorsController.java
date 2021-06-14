@@ -1,4 +1,4 @@
-package com.codeup.springblog;
+package com.codeup.springblog.controllers;
 
 import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;

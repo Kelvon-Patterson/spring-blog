@@ -1,16 +1,18 @@
-package com.codeup.springblog;
+package com.codeup.springblog.models;
 
-public class User {
+public class User_lec {
 
     private String firstName;
     private String lastName;
 
-    public User(String firstName, String lastName) {
+
+
+    public User_lec(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public User() {
+    public User_lec() {
     }
 
     public String getFullName(){

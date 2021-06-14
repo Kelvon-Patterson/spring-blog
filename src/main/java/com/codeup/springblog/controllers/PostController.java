@@ -1,16 +1,24 @@
-package com.codeup.springblog;
+package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.daos.PostRepository;
+import com.codeup.springblog.daos.UsersRepository;
+import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
+    //private field to store injected repository
+    private  PostRepository postDao;
 
-    private final PostRepository postDao;
+    private  UsersRepository usersDao;
 
-    public PostController(PostRepository postDao){
-        this.postDao=postDao;
+
+    public PostController(PostRepository postRepository, UsersRepository usersRepository){
+        usersDao = usersRepository;
+        postDao = postRepository;
     }
 
     @GetMapping(value = "/post")
@@ -26,15 +34,14 @@ public class PostController {
         return "post/show";
     }
 
-
-//    @GetMapping(value="/post/create")
-//    @ResponseBody
-//    public String createPostForm(Model model){
-//        model.addAttribute("createPost", postDao.save(postDao.findByTitle("")));
-//
-//        return "post/show";
-//    }
-
+//@PostMapping("/post/create")
+//public String save(@RequestParam(value = "title") String title,
+//                   @RequestParam(value = "body") String body){
+//    User user = usersDao.getById(1L);
+//    Post newPost = new Post(title, body, user);
+//    Post savedPost = postDao.save(newPost);
+//    return "redirect:/post/" + savedPost.getId();
+//}
     @PostMapping(value="/post/edit/{id}")
     public String editPost(@PathVariable long id, @RequestParam(name="editPost") String title,@RequestParam String body ) {
         Post post = new Post(id, title,body);
@@ -54,8 +61,6 @@ public class PostController {
        model.addAttribute("editPost", postDao.getById(id));
         return "post/edit";
     }
-    // Still need GetMapping to serve edit post page
-    //editPost should be name of input
 
     @GetMapping(value= "/post/delete/{id}")
     public String deletePost(@PathVariable long id ){
