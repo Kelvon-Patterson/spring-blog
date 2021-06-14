@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+</head>
+<nav th:replace="partials/navbar :: bootStrap_nav" ></nav>
+
+<header th:replace="/partials/RPS-header :: bootStrap_header"></header>
+<br>
+<body>
+
+<h2>
+  <span th:text="${match}"></span>
+</h2>
+<ul>
+<li><a href="/rock-paper-scissors/rock">Rock</a></li>
+<li><a href="/rock-paper-scissors/paper">Paper</a></li>
+<li><a href="/rock-paper-scissors/scissors">Scissors</a></li>
+</ul>
+
+<a href="/rock-paper-scissors">Play again</a>
+
+</body>
+<footer th:replace="/partials/footer :: bootStrap_footer"></footer>
+</html>

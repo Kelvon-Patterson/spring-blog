@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+</head>
+<body>
+<form th:action="@{|/post/edit/${editPost.id}|}" th:method="post" >
+    <input type="text" name="editPost" id="editPost" th:placeholder="${editPost.title}">
+    <input type="text" name="body" id="body" th:placeholder="${editPost.body}">
+    <button>Edit</button>
+</form>
+<a th:href="@{|/post/delete/${editPost.id}|}">Delete Post</a>
+</body>
+</html>
