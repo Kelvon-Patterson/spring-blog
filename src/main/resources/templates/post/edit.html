@@ -5,10 +5,13 @@
     <title>Edit Post</title>
 </head>
 <body>
-<form th:action="@{|/post/edit/${editPost.id}|}" th:method="post" >
-    <input type="text" name="editPost" id="editPost" th:placeholder="${editPost.title}">
-    <input type="text" name="body" id="body" th:placeholder="${editPost.body}">
-    <button>Edit</button>
+<form th:action="@{|/post/${editPost.id}/edit|}" th:method="post" th:object="${editPost}">
+
+    <input type="text" name="editPost" id="editPost" th:placeholder="${editPost.title}" th:field="*{title}">
+
+    <input type="text" name="body" id="body" th:placeholder="${editPost.body}" th:field="*{body}">
+
+    <button th:type="submit">Edit</button>
 </form>
 <a th:href="@{|/post/delete/${editPost.id}|}">Delete Post</a>
 </body>

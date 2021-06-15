@@ -7,6 +7,7 @@ import com.codeup.springblog.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PostController {
@@ -34,18 +35,21 @@ public class PostController {
         return "post/show";
     }
 
-//@PostMapping("/post/create")
-//public String save(@RequestParam(value = "title") String title,
-//                   @RequestParam(value = "body") String body){
-//    User user = usersDao.getById(1L);
-//    Post newPost = new Post(title, body, user);
-//    Post savedPost = postDao.save(newPost);
-//    return "redirect:/post/" + savedPost.getId();
-//}
-    @PostMapping(value="/post/edit/{id}")
-    public String editPost(@PathVariable long id, @RequestParam(name="editPost") String title,@RequestParam String body ) {
-        Post post = new Post(id, title,body);
-        postDao.save(post);
+    @GetMapping(value="/post/{id}/edit")
+    public String editPost(@PathVariable long id, Model model ) {
+        //find a post
+        Post postToEdit = postDao.getById(id);
+        model.addAttribute("editPost", postToEdit);
+        return "post/edit";
+    }
+
+    @PostMapping(value="/post/{id}/edit")
+    public String editPost(@PathVariable long id,
+                           @ModelAttribute Post post, RedirectAttributes redirect) {
+        //save changes
+        post.setUser(usersDao.getById(1L));
+        postDao.save(post); // update post set title= ? where id =?
+        redirect.addFlashAttribute("successfulSave","This post was successfully saved");
         return "redirect:/post/"+ id;
     }
 
@@ -56,11 +60,7 @@ public class PostController {
         return "redirect:/post";
     }
 
-    @GetMapping(value="/post/edit/{id}")
-    public String editPost(@PathVariable long id, Model model ) {
-       model.addAttribute("editPost", postDao.getById(id));
-        return "post/edit";
-    }
+
 
     @GetMapping(value= "/post/delete/{id}")
     public String deletePost(@PathVariable long id ){

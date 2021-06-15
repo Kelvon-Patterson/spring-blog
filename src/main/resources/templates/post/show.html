@@ -6,10 +6,17 @@
 </head>
 <body>
 <h1>This is my show template</h1>
-<div >
+<div th:if="${singlePost == null}">
+    This post does not exist!
+</div>
+<div th:if="${singlePost}">
     <h3 th:text="${singlePost.title}"></h3>
     <p th:text="${singlePost.body}"/>
     <p th:text="${singlePost.user.username}"/>
+</div>
+<p th:text="${successfulSave}"/>
+<div th:each="image: ${singlePost.images}">
+    <img th:src="${image.path}" th:alt="${image.description}">
 </div>
 </body>
 </html>
