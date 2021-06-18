@@ -4,6 +4,7 @@ import com.codeup.springblog.daos.PostRepository;
 import com.codeup.springblog.daos.UsersRepository;
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
+import com.codeup.springblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,13 @@ public class PostController {
 
     private  UsersRepository usersDao;
 
+    private EmailService emailService;
 
-    public PostController(PostRepository postRepository, UsersRepository usersRepository){
+
+    public PostController(PostRepository postRepository, UsersRepository usersRepository, EmailService emailService){
         usersDao = usersRepository;
         postDao = postRepository;
+        this.emailService=emailService;
     }
 
     @GetMapping(value = "/post")
@@ -50,13 +54,14 @@ public class PostController {
         post.setUser(usersDao.getById(1L));
         postDao.save(post); // update post set title= ? where id =?
         redirect.addFlashAttribute("successfulSave","This post was successfully saved");
-        return "redirect:/post/"+ id;
+        return "redirect:post/index";
     }
 
     @PostMapping(value="/post/add/")
     public String addPost( @RequestParam(name="addPost") String title,@RequestParam String body ) {
         Post post = new Post(title,body);
         postDao.save(post);
+        emailService.prepareAndSend(post,"new post created", post.getBody());
         return "redirect:/post";
     }
 

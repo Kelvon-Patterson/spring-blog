@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/partials/header :: bootStrap_header">
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
+<nav th:include="partials/navbar :: bootStrap_nav" ></nav>
 <body>
 <h1>Post</h1>
 
@@ -17,4 +18,6 @@
 
 
 </body>
+<footer th:replace="/partials/footer :: bootStrap_footer"></footer>
+
 </html>

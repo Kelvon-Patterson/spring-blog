@@ -37,7 +37,12 @@ public class User {
         this.email = email;
         this.password = password;
     }
-
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
     public long getId() {
         return id;
     }

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/partials/header :: bootStrap_header">
     <meta charset="UTF-8">
     <title>Edit Post</title>
 </head>
+<nav th:include="partials/navbar :: bootStrap_nav" ></nav>
 <body>
 <form th:action="@{|/post/${editPost.id}/edit|}" th:method="post" th:object="${editPost}">
 
@@ -15,4 +16,6 @@
 </form>
 <a th:href="@{|/post/delete/${editPost.id}|}">Delete Post</a>
 </body>
+<footer th:replace="/partials/footer :: bootStrap_footer"></footer>
+
 </html>

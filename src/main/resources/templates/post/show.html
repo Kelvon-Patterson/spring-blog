@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/partials/header :: bootStrap_header">
     <meta charset="UTF-8">
     <title>Show</title>
 </head>
 <body>
+<nav th:include="partials/navbar :: bootStrap_nav" ></nav>
 <h1>This is my show template</h1>
 <div th:if="${singlePost == null}">
     This post does not exist!
@@ -19,4 +20,6 @@
     <img th:src="${image.path}" th:alt="${image.description}">
 </div>
 </body>
+<footer th:replace="/partials/footer :: bootStrap_footer"></footer>
+
 </html>
