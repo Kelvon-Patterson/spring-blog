@@ -7,11 +7,11 @@
 <nav th:include="partials/navbar :: bootStrap_nav" ></nav>
 <body>
 <h1>Post</h1>
-
+F
 
 <div th:each="post : ${post}">
     <h3 th:text="${post.title}"></h3>
-    <p th:text="${post.body}"/>
+    <p th:text="${post.body}"></p>
 </div>
 
 
